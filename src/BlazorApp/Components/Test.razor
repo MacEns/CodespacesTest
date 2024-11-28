@@ -1,0 +1,27 @@
+﻿<section class="light" id="about">
+    <div style="background-color: white; width: 50%; padding: 4rem; margin: 3rem auto; text-align: center;">
+        <button class="btn btn-primary" @onclick="IncrementCount">+</button>
+        <button class="btn btn-outline-primary" disabled="">@Count</button>
+        <button class="btn btn-primary" @onclick="DecrementCount">-</button>
+    </div>
+    <p>@Message</p>
+</section>
+
+
+@code {
+    [Parameter, EditorRequired]
+    public required HttpClient Http { get; set; }
+
+    private int Count = 0;
+    private string Message = "Hello World!";
+    
+    private void IncrementCount()
+    {
+        Message = $"Count increased from {Count} to {++Count}";
+    }
+    
+    private void DecrementCount()
+    {
+        Message = $"Count decreased from {Count} to {--Count}";
+    }
+}
